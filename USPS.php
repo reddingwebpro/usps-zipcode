@@ -10,13 +10,10 @@ class USPS
 {
     private $userid = NULL;  // set this to the api key from USPS.com
 
-    public function getZipCode($data)
+    public function getZipCode($address,$city,$state)
     {
         $userid = $this->userid;
-        $line1 = $data['line1'];
-        $city = $data['city'];
-        $state = $data['state'];
-        $input_xml = "<ZipCodeLookupRequest USERID=\"$userid\"><Address ID= \"0\"><Address1>$line1</Address1><City>$city</City><State>$state</State></Address></ZipCodeLookupRequest>";
+        $input_xml = "<ZipCodeLookupRequest USERID=\"$userid\"><Address ID= \"0\"><Address1>$address</Address1><City>$city</City><State>$state</State></Address></ZipCodeLookupRequest>";
         $fields = array(
             'API' => 'ZipCodeLookup',
             'XML' => $input_xml
@@ -38,10 +35,9 @@ class USPS
 
 $uspsZip = new USPS();
 
-$data = array(
-    "line1" => '1600 Amphitheatre Parkway', // address line is required
-    "city" => 'Mountain View',
-    "state" => 'CA'  //looking for the two character state
-);
+$address = '1600 Amphitheatre Parkway'; // address line is required
+$city  = 'Mountain View';
+$state = 'CA';  //looking for the two character state
 
-echo $uspsZip->getZipCode($data);
+
+echo $uspsZip->getZipCode($address,$city,$state);
