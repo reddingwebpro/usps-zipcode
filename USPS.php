@@ -1,19 +1,26 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: reddingWebPro
  * Date: 1/23/2019
+ * Revised: 2/3/2019
+ * Version 1.1
  * Time: 7:05 PM
  */
+
+namespace RedWebDev;
+
 class USPS
 {
-    private $userid = NULL;  // set this to the api key from USPS.com
+
+    function __construct($api) {
+        $this->api = $api;
+    }
 
     public function getZipCode($address,$city,$state)
     {
-        $userid = $this->userid;
-        $input_xml = "<ZipCodeLookupRequest USERID=\"$userid\"><Address ID= \"0\"><Address1>$address</Address1><City>$city</City><State>$state</State></Address></ZipCodeLookupRequest>";
+        $api = $this->api;
+        $input_xml = "<ZipCodeLookupRequest USERID=\"$api\"><Address ID= \"0\"><Address1>$address</Address1><City>$city</City><State>$state</State></Address></ZipCodeLookupRequest>";
         $fields = array(
             'API' => 'ZipCodeLookup',
             'XML' => $input_xml
@@ -29,15 +36,3 @@ class USPS
         return $array_data['Address']['Zip5'];
     }
 }
-
-
-// example code shown below:
-
-$uspsZip = new USPS();
-
-$address = '1600 Amphitheatre Parkway'; // address line is required
-$city  = 'Mountain View';
-$state = 'CA';  //looking for the two character state
-
-
-echo $uspsZip->getZipCode($address,$city,$state);
