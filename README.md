@@ -10,3 +10,7 @@ When you instantiate the class, include the API key. See the example.php file fo
 
 ## Misc
 This is also a test for me as this is the first time I've developed code in the public using git. Most code has been for private repositories. This testing will be integrated with phpStorm.
+
+## License
+GNU General Public License v3.0 (GNU GPLv3)
+http://www.gnu.org/licenses/gpl-3.0-standalone.html
