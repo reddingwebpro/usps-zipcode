@@ -53,7 +53,7 @@ class USPS
         return $data['access_token'];
     }
 
-    public function getNormalized($address, $city, $state): array
+    public function getNormalized($address, $city, $state): ?int
     {
         $token = $this->getOauthV3Token();
         $authorization = "Authorization: Bearer ".$token;
@@ -74,6 +74,7 @@ class USPS
         $json = curl_exec($ch);
         curl_close($ch);
 
-        return json_decode($json, true);
+        $array = json_decode($json, true);
+        return $array['address']['ZIPCode'];
     }
 }

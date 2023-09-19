@@ -30,11 +30,6 @@ $address = '1600 Amphitheatre Parkway'; // address line is required
 $city = 'Mountain View';
 $state = 'CA';  //looking for the two character state
 
-$return = $uspsZip->getNormalized($address, $city, $state);
+$zipcode = $uspsZip->getNormalized($address, $city, $state);
 
-echo "<ul>";
-echo "<li>Address: " . $return['address']['streetAddress'];
-echo "<li>Address 2: " . $return['address']['secondaryAddress'];
-echo "<li>City: " . $return['address']['city'];
-echo "<li>State: " . $return['address']['state'];
-echo "<li>Zip: " . $return['address']['ZIPCode'];
+echo "Zip Code: " . $zipcode;
