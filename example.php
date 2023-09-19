@@ -13,18 +13,28 @@
  * Created by ReddingWebPro/ReddingWebDev
  * User: Jason J. Olson
  * License: GNU GPLv3
- * GitHub: https://github.com/reddingwebpro/usps-zipcode
- * Date: 3/6/2019
+ * GitHub: https://github.com/reddingwebpro/usps_address_validation
+ * Version 2.0
+ * Date: 3/6/2019 (rev. 9/19/23)
+ *
  */
 
-require('USPS.php');
+// example code shown below:
 
+require('USPS.php');
 use RedWebDev\USPS;
 
-$uspsZip = new USPS('YOUR_API_KEY_HERE');  // insert your api key from USPS
+$uspsZip = new USPS('Consumer Key','Consumer Secret');  // insert your api key from USPS
 
 $address = '1600 Amphitheatre Parkway'; // address line is required
 $city = 'Mountain View';
 $state = 'CA';  //looking for the two character state
 
-echo "Zip: " . $uspsZip->getZipCode($address, $city, $state);
+$return = $uspsZip->getNormalized($address, $city, $state);
+
+echo "<ul>";
+echo "<li>Address: " . $return['address']['streetAddress'];
+echo "<li>Address 2: " . $return['address']['secondaryAddress'];
+echo "<li>City: " . $return['address']['city'];
+echo "<li>State: " . $return['address']['state'];
+echo "<li>Zip: " . $return['address']['ZIPCode'];
