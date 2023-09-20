@@ -1,5 +1,5 @@
 {
-  "name": "reddingwebdev/usps_zip_code",
+  "name": "redwebdev/usps_zip_code",
   "description": "This class will take a normalized USA address and return the 5 digit zip code",
   "minimum-stability": "stable",
   "license": "GPL-3.0-or-later",
