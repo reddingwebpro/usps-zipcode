@@ -22,14 +22,13 @@
 // example code shown below:
 
 require('USPS.php');
-use RedWebDev\USPS;
 
-$uspsZip = new USPS('Consumer Key','Consumer Secret');  // insert your api key from USPS
+$uspsZip = new RedWebDev\uspszipcode('Consumer Key','Consumer Secret');  // insert your api key from USPS
 
 $address = '1600 Amphitheatre Parkway'; // address line is required
 $city = 'Mountain View';
 $state = 'CA';  //looking for the two character state
 
-$zipcode = $uspsZip->getNormalized($address, $city, $state);
+$zipcode = $uspsZip->getZipCode($address, $city, $state);
 
 echo "Zip Code: " . $zipcode;

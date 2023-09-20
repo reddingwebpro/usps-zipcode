@@ -20,7 +20,7 @@
 
 namespace RedWebDev;
 
-class USPS
+class uspszipcode
 {
 
     private string $key;
@@ -53,7 +53,7 @@ class USPS
         return $data['access_token'];
     }
 
-    public function getNormalized($address, $city, $state): ?int
+    public function getZipCode($address, $city, $state): ?int
     {
         $token = $this->getOauthV3Token();
         $authorization = "Authorization: Bearer ".$token;
